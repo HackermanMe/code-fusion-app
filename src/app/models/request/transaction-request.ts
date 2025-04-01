@@ -4,7 +4,7 @@ import { StatutTransaction } from "../../enums/statut-transaction";
 
 export interface TransactionRequest {
 
-    numero: string;
+    // numero: string;
     montant: number;
     date: Date;
     description: string;
