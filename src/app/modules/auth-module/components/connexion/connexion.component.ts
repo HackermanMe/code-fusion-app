@@ -76,7 +76,7 @@ export class ConnexionComponent {
     Swal.fire({
       icon: 'error',
       title: 'Erreur!',
-      text: 'Une erreur est survenue, veuillez réessayer.' + error,
+      text: '' + error,
       confirmButtonText: 'OK'
     });
   }
