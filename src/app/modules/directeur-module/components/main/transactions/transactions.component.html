@@ -1,0 +1,68 @@
+<table class="table align-middle table-hover dataTable table-body table-responsive w-100">
+    <thead>
+        <tr class="small text-muted text-uppercase">
+            <th>
+                <span class="form-check mb-0" style="font-size: 16px;">
+                    <input class="form-check-input select-all d-none d-md-block" type="checkbox" value="">
+                </span>
+            </th>
+            <th></th>
+            <th>Montant</th>
+            <th>Statut</th>
+            <th>Date</th>
+            <th>Méthode de paiement</th>
+            <th>Détails</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="row-selectable">
+            <td>
+                <span class="form-check mb-0">
+                    <input class="form-check-input" type="checkbox" value="">
+                </span>
+            </td>
+            <td>
+                <span class="d-flex align-items-center">
+                    <i class="fas fa-user-circle fa-2x text-secondary d-none d-sm-inline-block"></i>
+                    <span class="flex-fill ms-2">
+                        <span class="h6 mb-0">Jony Doe</span>
+                    </span>
+                </span>
+            </td>
+            <td>$500.00</td>
+            <td>
+                <span class="badge text-bg-success">Succès</span>
+            </td>
+            <td>05 Février 2024</td>
+            <td>Virement</td>
+            <td>
+                <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#detailsModal"
+                    title="Voir les détails">
+                    <i class="fas fa-info-circle"></i> Détails
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal pour afficher les détails -->
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Détails de la transaction</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Nom :</strong> Jony Doe</p>
+                <p><strong>Montant :</strong> $500.00</p>
+                <p><strong>Statut :</strong> Succès</p>
+                <p><strong>Date :</strong> 05 Février 2024</p>
+                <p><strong>Méthode de paiement :</strong> Virement</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>

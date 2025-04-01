@@ -1,13 +1,461 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>CodeFusionApp</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="icon" type="image/x-icon" href="assets/img/logo.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="financial dashboard">
+  <meta name="keyword" content="financial dashboard, financial reporting, admin panel, finance management">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <!--[ Template main css file ]-->
+  <link rel="stylesheet" href="assets/css/style.min.css">
+
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 </head>
-<body>
+
+<body data-theme="theme-Greylight" class="svgstroke-a add-tooltip">
   <app-root></app-root>
+
+  <!-- start: exchange rate -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas_exchange" aria-labelledby="offcanvas_exchange">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Notifications</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body px-0">
+      <div class="mb-4 p-3 bg-light">
+        <h6 class="text-muted mb-0">Change Currency</h6>
+      </div>
+      <div class="mb-4 px-3">
+        <select id="country1" name="country" data-placeholder="Select a country" data-dynamic-select=""
+          class="form-select">
+          <option value="United States Dollar" data-img="assets/images/flags/1x1/um.svg">United States
+            Dollar</option>
+          <option value="Afghan Afghani" data-img="assets/images/flags/1x1/af.svg">Afghan Afghani
+          </option>
+          <option value="Albanian Lek" data-img="assets/images/flags/1x1/al.svg">Albanian Lek</option>
+          <option value="Algerian Dinar" data-img="assets/images/flags/1x1/ad.svg">Algerian Dinar
+          </option>
+          <option value="Argentine Peso" data-img="assets/images/flags/1x1/ar.svg">Argentine Peso
+          </option>
+          <option value="Argentine Peso" data-img="assets/images/flags/1x1/ad.svg">Armenian Dram</option>
+          <option value="Armenian Dram" data-img="assets/images/flags/1x1/ad.svg">Armenian Dram</option>
+          <option value="Aruban Florin" data-img="assets/images/flags/1x1/af.svg">Aruban Florin</option>
+          <option value="Australian Dollar" data-img="assets/images/flags/1x1/au.svg">Australian Dollar
+          </option>
+          <option value="Azerbaijani Manat" data-img="assets/images/flags/1x1/az.svg">Azerbaijani Manat
+          </option>
+          <option value="Bahamian Dollar" data-img="assets/images/flags/1x1/bd.svg">Bahamian Dollar
+          </option>
+          <option value="Indian Rupis" data-img="assets/images/flags/1x1/in.svg">Indian Rupis</option>
+          <option value="Singapore Dollar" data-img="assets/images/flags/1x1/si.svg">Singapore Dollar
+          </option>
+          <option value="United States Dollar" data-img="assets/images/flags/1x1/un.svg">United States
+            Dollar</option>
+        </select>
+        <div class="d-flex my-2 justify-content-center align-items-center">
+          <div class="avatar lg rounded-circle no-thumbnail">
+            <svg class="svg-stroke" xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M5 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+              <path d="M19 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+              <path d="M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3"></path>
+              <path d="M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3"></path>
+            </svg>
+          </div>
+        </div>
+        <select id="country" name="country" data-placeholder="Select a country" data-dynamic-select=""
+          class="form-select">
+          <option value="Singapore Dollar" data-img="assets/images/flags/1x1/si.svg">Singapore Dollar
+          </option>
+          <option value="United States Dollar" data-img="assets/images/flags/1x1/um.svg">United States
+            Dollar</option>
+          <option value="Afghan Afghani" data-img="assets/images/flags/1x1/af.svg">Afghan Afghani
+          </option>
+          <option value="Albanian Lek" data-img="assets/images/flags/1x1/al.svg">Albanian Lek</option>
+          <option value="Algerian Dinar" data-img="assets/images/flags/1x1/ad.svg">Algerian Dinar
+          </option>
+          <option value="Argentine Peso" data-img="assets/images/flags/1x1/ar.svg">Argentine Peso
+          </option>
+          <option value="Argentine Peso" data-img="assets/images/flags/1x1/ad.svg">Armenian Dram</option>
+          <option value="Armenian Dram" data-img="assets/images/flags/1x1/ad.svg">Armenian Dram</option>
+          <option value="Aruban Florin" data-img="assets/images/flags/1x1/af.svg">Aruban Florin</option>
+          <option value="Australian Dollar" data-img="assets/images/flags/1x1/au.svg">Australian Dollar
+          </option>
+          <option value="Azerbaijani Manat" data-img="assets/images/flags/1x1/az.svg">Azerbaijani Manat
+          </option>
+          <option value="Bahamian Dollar" data-img="assets/images/flags/1x1/bd.svg">Bahamian Dollar
+          </option>
+          <option value="Indian Rupis" data-img="assets/images/flags/1x1/in.svg">Indian Rupis</option>
+          <option value="United States Dollar" data-img="assets/images/flags/1x1/un.svg">United States
+            Dollar</option>
+        </select>
+      </div>
+      <div class="mb-4 p-3 bg-light">
+        <h6 class="text-muted mb-0">Detail Currency</h6>
+      </div>
+      <div class="mb-4 px-3">
+        <div class="card">
+          <div class="card-header">
+            <h6 class="card-title mb-0">Movements</h6>
+          </div>
+          <div class="card-body">
+            <div id="movement-apex"></div>
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered mb-0">
+                <tbody>
+                  <tr>
+                    <th scope="row">Per 1 USD</th>
+                    <td>Per 1 Currency</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tax</th>
+                    <td><span class="badge bg-primary">2%</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Exchange Fee</th>
+                    <td>1%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex px-3">
+        <button type="button" class="btn w-100 me-1 py-2 btn-grey-outline">Change</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- start: template setting, and more. -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas_setting" aria-labelledby="offcanvas_setting">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Template Setting</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body px-0">
+      <h6 class="bg-light p-3 text-muted">Set Theme Color</h6>
+      <div class="mb-4 px-3">
+        <ul class="choose-skin themeSetting list-unstyled mb-0">
+          <li data-theme="Greylight" class="active">
+            <div style="--fintech-theme-color: #2e0ff8;"></div>
+          </li>
+          <li data-theme="SunOrange">
+            <div style="--fintech-theme-color: #F7A614;"></div>
+          </li>
+          <li data-theme="AppleGreen">
+            <div style="--fintech-theme-color: #5BC43A;"></div>
+          </li>
+          <li data-theme="CeruleanBlue">
+            <div style="--fintech-theme-color: #00B8D6;"></div>
+          </li>
+          <li data-theme="Mariner">
+            <div style="--fintech-theme-color: #0066FE;"></div>
+          </li>
+          <li data-theme="PurpleHeart">
+            <div style="--fintech-theme-color: #6238B3;"></div>
+          </li>
+          <li data-theme="FrenchRose">
+            <div style="--fintech-theme-color: #EB5393;"></div>
+          </li>
+        </ul>
+      </div>
+      <h6 class="bg-light p-3 text-muted">Icon Border Stroke</h6>
+      <div class="svg-stroke mb-4 px-3">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" name="stroke" id="Stroke_A" value="svgstroke-a" checked="">
+          <label class="btn btn-outline-primary" for="Stroke_A">Stroke 1</label>
+          <input type="radio" class="btn-check" name="stroke" id="Stroke_B" value="svgstroke-b">
+          <label class="btn btn-outline-primary" for="Stroke_B">Stroke 2</label>
+          <input type="radio" class="btn-check" name="stroke" id="Stroke_C" value="svgstroke-c">
+          <label class="btn btn-outline-primary" for="Stroke_C">Stroke 3</label>
+        </div>
+      </div>
+      <h6 class="bg-light p-3 text-muted">Layout Section Ligh/Dark</h6>
+      <div class="mb-4 px-3">
+        <ul class="list-unstyled d-flex flex-wrap">
+          <li class="me-2 mb-2 sidebar-toggle">
+            <input type="checkbox" class="btn-check" id="Sidebar_dark">
+            <label class="btn btn-outline-primary" for="Sidebar_dark">Sidebar</label>
+          </li>
+          <li class="me-2 mb-2 header-toggle">
+            <input type="checkbox" class="btn-check" id="Header_dark">
+            <label class="btn btn-outline-primary" for="Header_dark">Header</label>
+          </li>
+        </ul>
+      </div>
+      <h6 class="bg-light p-3 text-muted">More App Setting</h6>
+      <div class="mb-4 px-3">
+        <div class="form-check form-switch bodygradient-toggle">
+          <input class="form-check-input" type="checkbox" role="switch" id="bodyGradient" checked="">
+          <label class="form-check-label" for="bodyGradient">Body Gradient Background</label>
+        </div>
+        <div class="form-check form-switch monochrome-toggle">
+          <input class="form-check-input fs-6" type="checkbox" role="switch" id="monochrome">
+          <label class="form-check-label" for="monochrome">Monochrome Mode</label>
+        </div>
+        <div class="form-check form-switch radius-toggle">
+          <input class="form-check-input fs-6" type="checkbox" role="switch" id="radius0">
+          <label class="form-check-label" for="radius0">Border Radius none</label>
+        </div>
+        <div class="form-check form-switch svg-icon-color">
+          <input class="form-check-input fs-6" type="checkbox" role="switch" id="IconColor">
+          <label class="form-check-label" for="IconColor">Sidebar Icon color</label>
+        </div>
+        <div class="form-check form-switch cb-shadow">
+          <input class="form-check-input fs-6" type="checkbox" role="switch" id="BoxShadow">
+          <label class="form-check-label" for="BoxShadow">Card box shadow active</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--============== active class js =============-->
+  <script src="assets/js/active-class.js"></script>
+  <!--[ FintechWeb template vender js ]-->
+  <script src="assets/bundles/libscripts.bundle.js"></script>
+  <script src="assets/bundles/dynamicselect.js"></script>
+  <!-- Template page js -->
+  <script src="assets/js/main.js" defer></script>
+  <script>
+    // Basic Column
+    $(document).ready(function () {
+      var options = {
+        chart: {
+          height: 280,
+          type: 'bar',
+        },
+        colors: ['var(--theme-color6)', 'var(--theme-color3)'],
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '55%',
+            endingShape: 'rounded'
+          },
+        },
+        dataLabels: {
+          enabled: true,
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        series: [{
+          name: 'Revenue',
+          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+        }, {
+          name: 'Free Cash Flow',
+          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+        }],
+        xaxis: {
+          categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        },
+        yaxis: {
+          title: {
+            text: '$ (thousands)'
+          }
+        },
+        fill: {
+          opacity: 1
+
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands"
+            }
+          }
+        }
+      }
+
+      var chart = new ApexCharts(document.querySelector("#apex-basic-column"), options); chart.render();
+    });
+
+    $(document).ready(function () {
+      // Stacked Area
+      var options = {
+        chart: {
+          height: 200,
+          type: 'area',
+          stacked: true,
+          toolbar: {
+            show: false,
+          },
+          events: {
+            selection: function (chart, e) {
+              console.log(new Date(e.xaxis.min))
+            }
+          },
+        },
+        colors: ['#e4bd51'],
+        dataLabels: {
+          enabled: false
+        },
+
+        series: [
+          {
+            name: 'Central',
+            data: generateDayWiseTimeSeries(new Date('14 Aug 2024 GMT').getTime(), 10, {
+              min: 20,
+              max: 48
+            })
+          }
+        ],
+
+        fill: {
+          type: 'gradient',
+          gradient: {
+            opacityFrom: 0.6,
+            opacityTo: 0.8,
+          }
+        },
+
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          show: true,
+        },
+        xaxis: {
+          type: 'datetime',
+        },
+        grid: {
+          yaxis: {
+            lines: {
+              show: false,
+            }
+          },
+          padding: {
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
+          },
+        },
+        stroke: {
+          show: true,
+          curve: 'smooth',
+          width: 2,
+        },
+      }
+
+      var chart = new ApexCharts(document.querySelector("#movement-apex"), options);
+      chart.render();
+      function generateDayWiseTimeSeries(baseval, count, yrange) {
+        var i = 0;
+        var series = [];
+        while (i < count) {
+          var x = baseval;
+          var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+          series.push([x, y]);
+          baseval += 86400000;
+          i++;
+        }
+        return series;
+      }
+
+    });
+
+    //Spending Summary
+    var currentValue = 67; // Initial value for the radial bar (for "Outcome")
+
+    var options = {
+      series: [currentValue], // Start with one value
+      chart: {
+        height: 300,
+        type: 'radialBar',
+        offsetY: -10
+      },
+      colors: ['var(theme-color4),var(theme-color4)'],
+      plotOptions: {
+        radialBar: {
+          startAngle: -135,
+          endAngle: 135,
+          dataLabels: {
+            name: {
+              show: true,
+              fontSize: '16px',
+              color: 'var(theme-color4)',
+              offsetY: 40,
+              style: {
+                fontWeight: 'bold',
+                textAnchor: 'middle'
+              }
+            },
+            value: {
+              show: true,
+              offsetY: 70,
+              fontSize: '22px',
+              color: 'var(theme-color4)',
+              formatter: function (val) {
+                return val + "%";
+              },
+              style: {
+                textAnchor: 'middle'
+              }
+            }
+          }
+        }
+      },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shade: 'dark',
+          shadeIntensity: 0.15,
+          inverseColors: false,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [0, 50, 65, 91]
+        },
+      },
+      stroke: {
+        dashArray: 4
+      },
+      labels: ["Spent"],
+      tooltip: {
+        enabled: true,
+        style: {
+          fontSize: '12px',
+          background: 'rgba(0,0,0,0.8)',
+          color: '#fff',
+        },
+        y: {
+          formatter: function (val) {
+            return val + "%"; // Format the tooltip value
+          }
+        }
+      }
+    };
+    var chart = new ApexCharts(document.querySelector("#chart-Spending"), options);
+    chart.render();
+
+    // Radio button behavior
+    const radios = document.querySelectorAll('input[name="chartOptions"]');
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        // Get the selected value
+        const value = radio.value;
+        // Update the chart series data with the selected value
+        currentValue = value;
+        options.series = [currentValue]; // Update the series to show only one value
+        chart.updateOptions(options); // Update the chart
+      });
+    });
+
+  </script>
 </body>
+
 </html>
