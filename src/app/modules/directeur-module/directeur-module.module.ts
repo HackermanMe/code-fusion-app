@@ -11,6 +11,8 @@ import { MainComponent } from './components/main/main.component';
 import { TransactionsComponent } from './components/main/transactions/transactions.component';
 import { PointsDeVentesComponent } from './components/main/points-de-ventes/points-de-ventes.component';
 import { ListePdvComponent } from './components/main/points-de-ventes/liste-pdv/liste-pdv.component';
+import { RestaurantComponent } from './components/main/restaurant/restaurant.component';
+
 
 
 @NgModule({
@@ -24,6 +26,7 @@ import { ListePdvComponent } from './components/main/points-de-ventes/liste-pdv/
     TransactionsComponent,
     PointsDeVentesComponent,
     ListePdvComponent,
+    RestaurantComponent,
   ],
   imports: [
     CommonModule,
@@ -31,3 +34,5 @@ import { ListePdvComponent } from './components/main/points-de-ventes/liste-pdv/
   ]
 })
 export class DirecteurModuleModule { }
+
+
