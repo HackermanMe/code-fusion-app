@@ -10,5 +10,11 @@ export interface StationServiceResponse {
     actif : boolean,
     createdBy: string;
     updatedBy: string;
+    createdBy: string;
+    updatedBy: string;
+    nom: string;
+    adresse: string;
+    telephone: string;
+    actif: boolean;
 
 }

@@ -1,4 +1,4 @@
 export const environment = {
-    apiUrl: 'http://localhost:8080/api/',
+    apiUrl: 'https://code-fusion-api-1.onrender.com/api/',
     encryptionKey: 'your-secret-key',
 };

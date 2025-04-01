@@ -6,7 +6,7 @@ export interface RoleResponse {
     permissionTrackingId: string;
     permissionLibelle: string;
 
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt: string;
+    updatedAt: string;
 
 }

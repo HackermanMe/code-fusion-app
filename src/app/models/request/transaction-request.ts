@@ -8,11 +8,11 @@ export interface TransactionRequest {
     montant: number;
     date: Date;
     description: string;
-    type: TypeTransaction;
-    statut: StatutTransaction;
-    stationService: string;
-    restaurant: string;
-    boutique: string;
-    marqueteur: string;
+    type: TypeTransaction; // "VENTE"
+    statut: StatutTransaction; // "ATTENTE"
+    stationServiceTrackingId: string;
+    restaurantTrackingId: string;
+    boutiqueTrackingId: string;
+    marqueteurTrackingId: string;
 
 }
