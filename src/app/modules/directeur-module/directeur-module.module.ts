@@ -12,6 +12,7 @@ import { TransactionsComponent } from './components/main/transactions/transactio
 import { PointsDeVentesComponent } from './components/main/points-de-ventes/points-de-ventes.component';
 import { ListePdvComponent } from './components/main/points-de-ventes/liste-pdv/liste-pdv.component';
 import { RestaurantComponent } from './components/main/restaurant/restaurant.component';
+import { FormsModule } from '@angular/forms'; 
 
 
 
@@ -26,10 +27,13 @@ import { RestaurantComponent } from './components/main/restaurant/restaurant.com
     TransactionsComponent,
     PointsDeVentesComponent,
     ListePdvComponent,
+    
     RestaurantComponent,
+
   ],
   imports: [
     CommonModule,
+    FormsModule,
     DirecteurModuleRoutingModule
   ]
 })
