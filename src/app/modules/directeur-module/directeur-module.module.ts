@@ -39,6 +39,7 @@ import { EditBoutiqueComponent } from './components/main/boutiques/edit-boutique
     ListBoutiquesComponent,
     AddBoutiqueComponent,
     EditBoutiqueComponent,
+    StationComponent
   ],
   imports: [
     CommonModule,
