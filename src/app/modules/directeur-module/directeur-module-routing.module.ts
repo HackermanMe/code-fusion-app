@@ -17,6 +17,7 @@ const routes: Routes = [{
   children: [
     { path: '', component: BodyComponent },
 
+    { path: 'stations', component: StationComponent },
     { path: 'transactions', component: TransactionsComponent },
     { path: 'restaurant', component: RestaurantComponent },
     { path: 'list-boutiques', component: ListBoutiquesComponent },
