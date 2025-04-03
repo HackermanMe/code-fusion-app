@@ -6,6 +6,10 @@ import { PointsDeVentesComponent } from './components/main/points-de-ventes/poin
 import { ListePdvComponent } from './components/main/points-de-ventes/liste-pdv/liste-pdv.component';
 import { TransactionsComponent } from './components/main/transactions/transactions.component';
 import { RestaurantComponent } from './components/main/restaurant/restaurant.component';
+import { ListBoutiquesComponent } from './components/main/boutiques/list-boutiques/list-boutiques.component';
+import { AddBoutiqueComponent } from './components/main/boutiques/add-boutique/add-boutique.component';
+import { EditBoutiqueComponent } from './components/main/boutiques/edit-boutique/edit-boutique.component';
+
 
 const routes: Routes = [{
   path: '', component: DirecteurModuleComponent,
@@ -14,6 +18,9 @@ const routes: Routes = [{
 
     { path: 'transactions', component: TransactionsComponent },
     { path: 'restaurant', component: RestaurantComponent },
+    { path: 'list-boutiques', component: ListBoutiquesComponent },
+    { path: 'add-boutique', component: AddBoutiqueComponent },
+    { path: 'edit/:id', component: EditBoutiqueComponent },
 
     {
       path: 'pdv', component: PointsDeVentesComponent, children: [

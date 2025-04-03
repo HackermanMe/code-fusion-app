@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-md position-fixed top-0 w-100 z-3 body-color">
+  <!-- Votre barre de navigation -->
+</nav>
+
+<main class="container-fluid px-0">
+  <div class="content">
+    <div class="px-xl-5 px-lg-4 px-3 py-3 page-body my-2 py-2">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-xl-6 col-lg-8 col-md-10">
+          <div class="card">
+            <div class="card-header bg-dark text-white">
+              <h5 class="card-title mb-0">Ajouter une nouvelle boutique</h5>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="boutiqueForm" (ngSubmit)="onSubmit()">
+                <!-- Nom -->
+                <div class="mb-3">
+                  <label for="nom" class="form-label">Nom de la boutique</label>
+                  <input type="text" class="form-control" id="nom" formControlName="nom" placeholder="Entrez le nom">
+                  <div *ngIf="boutiqueForm.get('nom')?.invalid && boutiqueForm.get('nom')?.touched"
+                    class="text-danger mt-1">
+                    <small>Ce champ est obligatoire</small>
+                  </div>
+                </div>
+
+                <!-- Adresse -->
+                <div class="mb-3">
+                  <label for="adresse" class="form-label">Adresse</label>
+                  <input type="text" class="form-control" id="adresse" formControlName="adresse" placeholder="Entrez l'adresse">
+                  <div *ngIf="boutiqueForm.get('adresse')?.invalid && boutiqueForm.get('adresse')?.touched"
+                    class="text-danger mt-1">
+                    <small>Ce champ est obligatoire</small>
+                  </div>
+                </div>
+
+                <!-- Téléphone -->
+                <div class="mb-3">
+                  <label for="telephone" class="form-label">Téléphone</label>
+                  <input type="tel" class="form-control" id="telephone" formControlName="telephone"
+                    placeholder="Entrez le numéro">
+                  <div *ngIf="boutiqueForm.get('telephone')?.invalid && boutiqueForm.get('telephone')?.touched"
+                    class="text-danger mt-1">
+                    <small *ngIf="boutiqueForm.get('telephone')?.errors?.['pattern']">Format invalide</small>
+                  </div>
+                </div>
+
+                <!-- Statut Actif -->
+                <div class="mb-4 form-check form-switch">
+                  <input type="checkbox" class="form-check-input" id="actif" formControlName="actif">
+                  <label class="form-check-label" for="actif">Boutique active</label>
+                </div>
+
+                <!-- Boutons -->
+                <div class="d-flex justify-content-end">
+                  <button type="button" class="btn btn-outline-secondary me-2" (click)="onCancel()">
+                    Annuler
+                  </button>
+                  <button type="submit" class="btn btn-primary" [disabled]="boutiqueForm.invalid || isLoading">
+                    <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-1"></span>
+                    Enregistrer
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

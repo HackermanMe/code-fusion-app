@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { DirecteurModuleRoutingModule } from './directeur-module-routing.module';
 import { DirecteurModuleComponent } from './directeur-module.component';
 import { AsideComponent } from './components/aside/aside.component';
@@ -14,6 +13,12 @@ import { ListePdvComponent } from './components/main/points-de-ventes/liste-pdv/
 import { FormsModule } from '@angular/forms';
 import {RestaurantComponent} from './components/main/restaurant/restaurant.component';
 
+import { BoutiquesComponent } from './components/main/boutiques/boutiques.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ListBoutiquesComponent } from './components/main/boutiques/list-boutiques/list-boutiques.component';
+import { MessageService } from 'primeng/api';
+import { AddBoutiqueComponent } from './components/main/boutiques/add-boutique/add-boutique.component';
+import { EditBoutiqueComponent } from './components/main/boutiques/edit-boutique/edit-boutique.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +31,18 @@ import {RestaurantComponent} from './components/main/restaurant/restaurant.compo
     TransactionsComponent,
     PointsDeVentesComponent,
     ListePdvComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    BoutiquesComponent,
+    ListBoutiquesComponent,
+    AddBoutiqueComponent,
+    EditBoutiqueComponent,
   ],
   imports: [
     CommonModule,
     DirecteurModuleRoutingModule,
-    FormsModule
-  ]
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [MessageService],
 })
-export class DirecteurModuleModule { }
+export class DirecteurModuleModule {}

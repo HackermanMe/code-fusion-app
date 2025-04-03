@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Liste des Boutiques</h2>
+
+  <button class="btn btn-primary mb-3" (click)="addBoutique()">
+    <i class="bi bi-plus-lg"></i> Ajouter une Boutique
+  </button>
+
+  <div *ngIf="loading" class="text-center my-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+    <p>Chargement des boutiques...</p>
+  </div>
+
+  <div *ngIf="!loading && boutiques.length > 0">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Nom</th>
+          <th>Adresse</th>
+          <th>Téléphone</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let boutique of boutiques">
+          <td>{{ boutique.nom }}</td>
+          <td>{{ boutique.adresse }}</td>
+          <td>{{ boutique.telephone }}</td>
+          <td>
+            <span class="badge" [ngClass]="boutique.actif ? 'bg-success' : 'bg-danger'">
+              {{ boutique.actif ? 'Actif' : 'Inactif' }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-outline-secondary btn-sm me-2" (click)="editBoutique(boutique.trackingId)">
+              <i class="bi bi-pencil"></i> Modifier
+            </button>
+            <button class="btn btn-outline-danger btn-sm" (click)="deleteBoutique(boutique.trackingId)">
+              <i class="bi bi-trash"></i> Supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && boutiques.length === 0" class="alert alert-warning text-center">
+    Aucune boutique disponible.
+  </div>
+</div>

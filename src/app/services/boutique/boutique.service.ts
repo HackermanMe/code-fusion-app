@@ -11,6 +11,7 @@ import { BoutiqueResponse } from '../../models/response/boutique-response';
 
 
 interface ApiResponse<T> {
+  _embedded: any;
   message: string;
   data: T;
 }
@@ -23,7 +24,7 @@ interface ApiResponse<T> {
 })
 export class BoutiqueService {
 
-  private apiUrl = `${environment.apiUrl}/api/boutiques`; 
+  private apiUrl = `${environment.apiUrl}boutiques`;
 
   constructor(private http: HttpClient) { }
 
@@ -38,7 +39,7 @@ export class BoutiqueService {
   getAllBoutiques(): Observable<ApiResponse<BoutiqueResponse[]>> {
     return this.http.get<ApiResponse<BoutiqueResponse[]>>(this.apiUrl);
   }
-  
+
 
   updateBoutique(trackingId: string, request: BoutiqueRequest): Observable<ApiResponse<BoutiqueResponse>> {
     return this.http.put<ApiResponse<BoutiqueResponse>>(`${this.apiUrl}/${trackingId}`, request);
@@ -47,8 +48,8 @@ export class BoutiqueService {
   deleteBoutique(trackingId: string): Observable<ApiResponse<void>> {
     return this.http.delete<ApiResponse<void>>(`${this.apiUrl}/${trackingId}`);
   }
-  
-  
+
+
 }
 
 
