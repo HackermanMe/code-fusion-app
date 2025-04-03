@@ -1,57 +1,68 @@
-<div class="container mx-auto p-6">
-  <div class="max-w-md mx-auto bg-white shadow-md rounded-lg">
-      <h2 class="text-xl font-semibold text-gray-700 text-center my-4">Ajouter un Restaurant</h2>
 
-      <form (ngSubmit)="submitForm()">
-          <div class="mb-4">
-              <label class="block text-gray-600" for="shopName">Nom du restaurant :</label>
-              <input 
-                  type="text" 
-                  id="shopName"
-                  [(ngModel)]="restaurantData.nom" 
-                  name="nom" 
-                  required 
-                  class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                  placeholder="Entrez le nom du restaurant"
-              >
-          </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-          <div class="mb-4">
-              <label class="block text-gray-600" for="shopAddress">Adresse :</label>
-              <input 
-                  type="text" 
-                  id="shopAddress"
-                  [(ngModel)]="restaurantData.adresse" 
-                  name="adresse" 
-                  required 
-                  class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                  placeholder="Entrez l'adresse du restaurant"
-              >
-          </div>
+<div class="container py-5">
+    <div class="card shadow-lg mx-auto" style="max-width: 500px;">
+        <div class="card-body">
+            <h2 class="text-center text-dark fw-bold mb-4">Ajouter un Restaurant</h2>
 
-          <div class="mb-4">
-              <label class="block text-gray-600" for="shopPhone">Téléphone :</label>
-              <input 
-                  type="tel" 
-                  id="shopPhone"
-                  [(ngModel)]="restaurantData.telephone" 
-                  name="telephone" 
-                  required
-                  class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                  placeholder="Entrez le numéro de téléphone du restaurant"
-              >
-          </div>
+            <form (ngSubmit)="submitForm()">
+                <!-- Nom du Restaurant -->
+                <div class="mb-3">
+                    <label for="shopName" class="form-label">Nom du restaurant :</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-shop"></i></span>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="shopName"
+                            [(ngModel)]="restaurantData.nom" 
+                            name="nom" 
+                            required 
+                            placeholder="Ex: La Belle Table"
+                        >
+                    </div>
+                </div>
 
-          
+                <!-- Adresse -->
+                <div class="mb-3">
+                    <label for="shopAddress" class="form-label">Adresse :</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="shopAddress"
+                            [(ngModel)]="restaurantData.adresse" 
+                            name="adresse" 
+                            required 
+                            placeholder="Ex: 123 Rue des Délices"
+                        >
+                    </div>
+                </div>
 
-          <button type="submit"
-              class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
-              Soumettre
-          </button>
+                <!-- Téléphone -->
+                <div class="mb-3">
+                    <label for="shopPhone" class="form-label">Téléphone :</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                        <input 
+                            type="tel" 
+                            class="form-control" 
+                            id="shopPhone"
+                            [(ngModel)]="restaurantData.telephone" 
+                            name="telephone" 
+                            required
+                            placeholder="Ex: +229 97 65 43 21"
+                        >
+                    </div>
+                </div>
 
-      </form>
-  </div>
+                <!-- Bouton de soumission -->
+                <button type="submit" class="btn btn-dark w-100 fw-bold">
+                    Ajouter le Restaurant
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
-
-
-
