@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-restaurant',
   templateUrl: './restaurant.component.html',
   styleUrl: './restaurant.component.css',
-  standalone: true,
+  standalone: false,
 })
 export class RestaurantComponent {
   restaurantData = {

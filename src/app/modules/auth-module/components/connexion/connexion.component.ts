@@ -84,6 +84,9 @@ export class ConnexionComponent {
         this.router.navigate(['/comptable']);
       }
 
+      else{
+        this.router.navigate(['/directeur']);
+      }
 
     });
   }
