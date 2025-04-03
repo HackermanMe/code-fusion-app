@@ -1,5 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RestaurantComponent } from './restaurant.component';
 
 describe('RestaurantComponent', () => {

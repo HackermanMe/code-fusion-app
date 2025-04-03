@@ -9,6 +9,9 @@ import { environment } from '../../../environments/environment.development';
   providedIn: 'root'
 })
 export class RestaurantService {
+  getRestaurantServices() {
+    throw new Error('Method not implemented.');
+  }
   private baseUrl = environment.apiUrl + 'restaurants';
 
   constructor(private http: HttpClient) { }
