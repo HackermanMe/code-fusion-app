@@ -10,6 +10,7 @@ import { ListBoutiquesComponent } from './components/main/boutiques/list-boutiqu
 import { AddBoutiqueComponent } from './components/main/boutiques/add-boutique/add-boutique.component';
 import { EditBoutiqueComponent } from './components/main/boutiques/edit-boutique/edit-boutique.component';
 
+import { StationComponent } from './components/main/station/station.component';
 
 const routes: Routes = [{
   path: '', component: DirecteurModuleComponent,

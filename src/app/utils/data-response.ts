@@ -1,7 +1,6 @@
 export interface DataResponse<T> {
 
-    timestamp: string;
-    isError: boolean;
+    success: boolean;
     message: string;
     data: T
 

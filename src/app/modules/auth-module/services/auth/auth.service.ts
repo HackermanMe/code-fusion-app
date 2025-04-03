@@ -8,6 +8,7 @@ import { environment } from '../../../../../environments/environment.development
 import { LoginRequest } from '../../../../models/request/login-request';
 import { DataResponse } from '../../../../utils/data-response';
 import { RegisterRequest } from '../../../../models/request/register-request';
+import {AuthResponse} from '../../../../models/response/auth-response';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,8 @@ export class AuthService {
     private cryptageService: CryptageService
   ) { }
 
-  login(credentials: LoginRequest): Observable<DataResponse<string>> {
-    return this.http.post<DataResponse<string>>(`${this.apiUrl}login`, credentials);
+  login(credentials: LoginRequest): Observable<DataResponse<AuthResponse>> {
+    return this.http.post<DataResponse<AuthResponse>>(`${this.apiUrl}login`, credentials);
   }
 
   register(credentials: RegisterRequest): Observable<DataResponse<void>> {
