@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { CryptageService } from '../cryptage/cryptage.service';
-import { jwtDecode } from 'jwt-decode';
-import { environment } from '../../../../../environments/environment.development';
-import { LoginRequest } from '../../../../models/request/login-request';
-import { DataResponse } from '../../../../utils/data-response';
-import { RegisterRequest } from '../../../../models/request/register-request';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {CryptageService} from '../cryptage/cryptage.service';
+import {jwtDecode} from 'jwt-decode';
+import {environment} from '../../../../../environments/environment.development';
+import {LoginRequest} from '../../../../models/request/login-request';
+import {DataResponse} from '../../../../utils/data-response';
+import {RegisterRequest} from '../../../../models/request/register-request';
 import {AuthResponse} from '../../../../models/response/auth-response';
 
 @Injectable({
@@ -20,7 +20,8 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private cryptageService: CryptageService
-  ) { }
+  ) {
+  }
 
   login(credentials: LoginRequest): Observable<DataResponse<AuthResponse>> {
     return this.http.post<DataResponse<AuthResponse>>(`${this.apiUrl}login`, credentials);
@@ -71,8 +72,10 @@ export class AuthService {
     this.cryptageService.removeItem('auth_token');
   }
 
-  logout(): void {
+  logout(): Observable<DataResponse<void>> {
     this.clearToken();
     this.router.navigate(['/auth/login']);
+    return this.http.post<DataResponse<void>>(`${this.apiUrl}logout`, {});
   }
+
 }

@@ -256,10 +256,17 @@
             <li class="nav-item py-2 py-md-1 col-auto d-none d-sm-flex">
                 <div class="vr d-none d-sm-flex h-100 mx-sm-2"></div>
             </li>
-            <li>
+            @if(claims){
+              <li>
+                <a data-bs-toggle="offcanvas" aria-expanded="false" title="exchange"
+                   class="btn btn-grey-outline fw-medium bg-danger text-white" (click)="logout()">Deconnexion</a>
+              </li>
+            }@else{
+              <li>
                 <a href="#offcanvas_exchange" data-bs-toggle="offcanvas" aria-expanded="false" title="exchange"
-                    class="btn btn-grey-outline fw-medium">Exachange Rate</a>
-            </li>
+                   class="btn btn-grey-outline fw-medium">Exachange Rate</a>
+              </li>
+            }
             <li class="dropdown d-block d-lg-none">
                 <button class="btn btn-sm sidebar-toggle ms-3 border" type="button"><i class="fa fa-bars"></i></button>
             </li>
