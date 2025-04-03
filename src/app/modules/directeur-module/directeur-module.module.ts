@@ -13,6 +13,9 @@ import { PointsDeVentesComponent } from './components/main/points-de-ventes/poin
 import { ListePdvComponent } from './components/main/points-de-ventes/liste-pdv/liste-pdv.component';
 import { FormsModule } from '@angular/forms';
 import {RestaurantComponent} from './components/main/restaurant/restaurant.component';
+import { StationComponent } from './components/main/station/station.component';
+
+
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import {RestaurantComponent} from './components/main/restaurant/restaurant.compo
     TransactionsComponent,
     PointsDeVentesComponent,
     ListePdvComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    StationComponent,
+    
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:8080'  // Remplace par l'URL de ton API Spring Boot
+    apiUrl: 'http://localhost:8080'  
   };
