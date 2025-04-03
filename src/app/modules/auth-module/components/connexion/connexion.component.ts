@@ -3,6 +3,8 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { LoginRequest } from '../../../../models/request/login-request';
+import {DataResponse} from '../../../../utils/data-response';
+import {AuthResponse} from '../../../../models/response/auth-response';
 
 @Component({
   selector: 'app-connexion',
@@ -48,13 +50,17 @@ export class ConnexionComponent {
   login(): void {
     if (this.check()) {
       this.authService.login(this.credentials).subscribe({
-        next: (response) => {
-          this.authService.saveToken(response.data);
-          this.messageSucces();
+        next: (response: DataResponse<AuthResponse>) => {
+          if (response.success && response.data.accessToken) {
+            this.authService.saveToken(response.data.accessToken);
+            this.messageSucces();
+          } else {
+            this.messageErreur(response.message || 'Token non reçu');
+          }
         },
         error: (err) => {
           console.error('Erreur de connexion', err.error.message);
-          this.messageErreur(err.error.message)
+          this.messageErreur(err.error.message);
         }
       });
     }

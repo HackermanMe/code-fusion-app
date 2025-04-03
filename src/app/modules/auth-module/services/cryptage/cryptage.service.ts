@@ -6,7 +6,7 @@ import { environment } from '../../../../../environments/environment.development
   providedIn: 'root'
 })
 export class CryptageService {
-  private secretKey = environment.encryptionKey || 'default-secure-key-12345';
+  private secretKey = environment.encryptionKey;
 
   constructor() { }
 
