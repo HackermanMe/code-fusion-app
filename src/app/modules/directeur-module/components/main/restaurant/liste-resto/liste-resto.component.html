@@ -1,0 +1,49 @@
+
+<style>
+    .container {
+  margin-top: 20px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.8s;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 6px rgb(0, 0, 0, 0.2);
+  transform: scale(1.04);
+}
+</style>
+
+<div class="container mt-5">
+    <h2 class="text-center">Restaurants</h2>
+    <button class="btn btn-primary mb-3" (click)="addRestaurant()">Ajouter un Restaurant</button>
+  
+    <div *ngIf="loading" class="text-center">Chargement des restaurants...</div>
+  
+    <div *ngIf="!loading && restaurants.length === 0" class="text-center">Aucun restaurant trouvé.</div>
+  
+    <div class="row">
+      <div class="col-md-4" *ngFor="let restaurant of restaurants">
+        <div class="product-card">
+          <h4><strong>{{ restaurant.nom }}</strong></h4>
+          <p><strong>Adresse:</strong> {{ restaurant.adresse }}</p>
+          <p><strong>Téléphone:</strong> {{ restaurant.telephone }}</p>
+          <p><strong>Status:</strong> {{ restaurant.actif ? 'Actif' : 'Inactif' }}</p>
+          <div class="center">
+            <!-- Ici vous pouvez mettre une image si nécessaire -->
+            <img *ngIf="restaurant.image" [src]="restaurant.image" alt="Image de {{ restaurant.nom }}" style="max-width: 100%;">
+          </div>
+          <div class="m-4 center" style="gap: 10px">
+            <button class="btn btn-warning" (click)="editRestaurant(restaurant.trackingId)">Modifier</button>
+            <button class="btn btn-danger" (click)="deleteRestaurant(restaurant.trackingId)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
