@@ -22,6 +22,12 @@ import { ListBoutiquesComponent } from './components/main/boutiques/list-boutiqu
 import { MessageService } from 'primeng/api';
 import { AddBoutiqueComponent } from './components/main/boutiques/add-boutique/add-boutique.component';
 import { EditBoutiqueComponent } from './components/main/boutiques/edit-boutique/edit-boutique.component';
+import { UsersComponent } from './components/main/users/users.component';
+import { AddUsersComponent } from './components/main/users/add-users/add-users.component';
+import { ListUsersComponent } from './components/main/users/list-users/list-users.component';
+import {Toast, ToastModule} from 'primeng/toast';
+import {InputTextModule} from 'primeng/inputtext';
+import {PasswordModule} from 'primeng/password';
 
 @NgModule({
   declarations: [
@@ -39,13 +45,20 @@ import { EditBoutiqueComponent } from './components/main/boutiques/edit-boutique
     ListBoutiquesComponent,
     AddBoutiqueComponent,
     EditBoutiqueComponent,
-    StationComponent
+    StationComponent,
+    UsersComponent,
+    AddUsersComponent,
+    ListUsersComponent
   ],
   imports: [
     CommonModule,
     DirecteurModuleRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    Toast,
+    InputTextModule,
+    PasswordModule,
+    ToastModule
   ],
   providers: [MessageService],
 })

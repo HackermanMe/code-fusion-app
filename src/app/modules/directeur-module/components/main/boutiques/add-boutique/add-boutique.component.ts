@@ -37,7 +37,7 @@ export class AddBoutiqueComponent implements OnInit {
       nom: ['', Validators.required],
       adresse: ['', Validators.required],
       telephone: ['', [Validators.pattern('^[0-9]+$')]],
-      actif: [false], 
+      actif: [false],
     });
   }
 
@@ -54,6 +54,7 @@ export class AddBoutiqueComponent implements OnInit {
     this.errorMessage = '';
 
     const formData = this.boutiqueForm.value;
+
     const boutiqueData: BoutiqueRequest = {
       nom: formData.nom,
       adresse: formData.adresse,
@@ -70,7 +71,7 @@ export class AddBoutiqueComponent implements OnInit {
           summary: 'Ajout réussi',
           detail: 'Boutique ajoutée',
         });
-        this.router.navigate(['/list-boutiques']);
+        this.router.navigate(['/directeur/list-boutiques']);
       },
       error: (error) => {
         this.isLoading = false;
@@ -86,6 +87,6 @@ export class AddBoutiqueComponent implements OnInit {
    * Annuler et retourner à la liste
    */
   onCancel(): void {
-    this.router.navigate(['/list-boutiques']);
+    this.router.navigate(['/directeur/list-boutiques']);
   }
 }
