@@ -10,9 +10,9 @@ export interface TransactionRequest {
     description: string;
     type: TypeTransaction;
     statut: StatutTransaction;
-    stationService: string;
-    restaurant: string;
-    boutique: string;
-    marqueteur: string;
+    stationServiceTrackingId: string;
+    restaurantTrackingId: string;
+    boutiqueTrackingId: string;
+    marqueteurTrackingId: string;
 
 }

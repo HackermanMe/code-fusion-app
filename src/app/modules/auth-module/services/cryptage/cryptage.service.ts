@@ -6,71 +6,50 @@ import { environment } from '../../../../../environments/environment.development
   providedIn: 'root'
 })
 export class CryptageService {
-  // Utilisez une clé plus sécurisée (idéalement depuis environment.ts)
-  private secretKey = 'default-secret-key-123';
+  private secretKey = environment.encryptionKey || 'default-secure-key-12345';
 
   constructor() { }
 
-  // Chiffrer les données
   encrypt(data: string): string {
     try {
+      if (!data) return '';
       return CryptoJS.AES.encrypt(data, this.secretKey).toString();
     } catch (error) {
-      console.error('Erreur de chiffrement:', error);
-      return data; // Retourne les données non chiffrées en cas d'erreur
+      console.error('Encryption error:', error);
+      return data;
     }
   }
 
-  // Déchiffrer les données
   decrypt(encryptedData: string): string {
+    if (!encryptedData) return '';
+
     try {
       const bytes = CryptoJS.AES.decrypt(encryptedData, this.secretKey);
       const decrypted = bytes.toString(CryptoJS.enc.Utf8);
-
-      if (!decrypted) {
-        console.warn('Décryptage retourné vide - retour des données originales');
-        return encryptedData;
-      }
-
-      return decrypted;
+      return decrypted || encryptedData;
     } catch (error) {
-      console.error('Erreur de déchiffrement:', error);
-      return encryptedData; // Retourne les données originales en cas d'erreur
+      console.error('Decryption error:', error);
+      return encryptedData;
     }
   }
 
-  // Stocker des données chiffrées
   setEncryptedItem(key: string, data: string): void {
     try {
-      if (typeof data !== 'string') {
-        data = JSON.stringify(data);
-      }
-      const encryptedData = this.encrypt(data);
-      localStorage.setItem(key, encryptedData);
+      const encrypted = this.encrypt(data);
+      localStorage.setItem(key, encrypted);
     } catch (error) {
-      console.error('Erreur lors du stockage:', error);
-      localStorage.setItem(key, data); // Stocke non chiffré en dernier recours
+      console.error('Storage set error:', error);
+      localStorage.setItem(key, data);
     }
   }
 
-  // Récupérer des données déchiffrées
   getDecryptedItem(key: string): string | null {
     try {
-      const encryptedData = localStorage.getItem(key);
-      if (!encryptedData) return null;
-
-      // Essayez de décrypter
-      const decrypted = this.decrypt(encryptedData);
-
-      // Vérifiez si le décryptage a retourné quelque chose d'utilisable
-      try {
-        return JSON.parse(decrypted); // Essayez de parser en cas de JSON
-      } catch {
-        return decrypted; // Retourne la string directement si ce n'est pas du JSON
-      }
+      const data = localStorage.getItem(key);
+      return data ? this.decrypt(data) : null;
     } catch (error) {
-      console.error('Erreur de récupération:', error);
-      return localStorage.getItem(key); // Retourne la valeur non décryptée
+      console.error('Storage get error:', error);
+      return localStorage.getItem(key);
     }
   }
 

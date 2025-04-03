@@ -17,6 +17,7 @@ export class ConnexionComponent {
 
   error_email: String = "";
   error_password: String = "";
+  claims: any = null;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -52,8 +53,8 @@ export class ConnexionComponent {
           this.messageSucces();
         },
         error: (err) => {
-          console.error('Erreur de connexion', err);
-          this.messageErreur(err.message)
+          console.error('Erreur de connexion', err.error.message);
+          this.messageErreur(err.error.message)
         }
       });
     }
@@ -68,7 +69,22 @@ export class ConnexionComponent {
       timer: 500,
       timerProgressBar: true,
     }).then(() => {
-      this.router.navigate(['/main']);
+
+      this.claims = this.authService.getUserClaims();
+
+      if(this.claims && this.claims.role === 'DIRECTEUR') {
+        this.router.navigate(['/directeur']);
+      }
+
+      else if(this.claims && this.claims.role === 'GERANT') {
+        this.router.navigate(['/gerant']);
+      }
+
+      else if(this.claims && this.claims.role === 'COMPTABLE') {
+        this.router.navigate(['/comptable']);
+      }
+
+
     });
   }
 

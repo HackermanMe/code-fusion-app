@@ -1,67 +1,126 @@
-<table class="table align-middle table-hover dataTable table-body table-responsive w-100">
-    <thead>
-        <tr class="small text-muted text-uppercase">
-            <th>
-                <span class="form-check mb-0" style="font-size: 16px;">
-                    <input class="form-check-input select-all d-none d-md-block" type="checkbox" value="">
-                </span>
-            </th>
-            <th></th>
-            <th>Montant</th>
-            <th>Statut</th>
-            <th>Date</th>
-            <th>Méthode de paiement</th>
-            <th>Détails</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="row-selectable">
-            <td>
-                <span class="form-check mb-0">
-                    <input class="form-check-input" type="checkbox" value="">
-                </span>
-            </td>
-            <td>
-                <span class="d-flex align-items-center">
-                    <i class="fas fa-user-circle fa-2x text-secondary d-none d-sm-inline-block"></i>
-                    <span class="flex-fill ms-2">
-                        <span class="h6 mb-0">Jony Doe</span>
+<div class="mt-3 w-100">
+    <form class="form-horizontal" id="addTransactionForm" (ngSubmit)="addTransaction()">
+        <fieldset>
+            <!-- === Numéro de transaction ===-->
+            <div class="mb-3">
+                <label for="numero" class="form-label">Numéro de transaction</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent">
+                        <i class="fas fa-hashtag"></i>
                     </span>
-                </span>
-            </td>
-            <td>$500.00</td>
-            <td>
-                <span class="badge text-bg-success">Succès</span>
-            </td>
-            <td>05 Février 2024</td>
-            <td>Virement</td>
-            <td>
-                <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#detailsModal"
-                    title="Voir les détails">
-                    <i class="fas fa-info-circle"></i> Détails
+                    <input type="text" class="form-control border-start-0" id="numero"
+                        [(ngModel)]="newTransaction.numero" name="numero" required>
+                </div>
+            </div>
+
+            <!-- === Montant ===-->
+            <div class="mb-3">
+                <label for="montant" class="form-label">Montant</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent">
+                        <i class="fas fa-dollar-sign"></i>
+                    </span>
+                    <input type="number" class="form-control border-start-0" id="montant"
+                        [(ngModel)]="newTransaction.montant" name="montant" required>
+                </div>
+            </div>
+
+            <!-- === Date ===-->
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent">
+                        <i class="fas fa-calendar-alt"></i>
+                    </span>
+                    <input type="date" class="form-control border-start-0" id="date" [(ngModel)]="newTransaction.date"
+                        name="date" required>
+                </div>
+            </div>
+
+            <!-- === Type ===-->
+            <div class="mb-3">
+                <label for="type" class="form-label">Type de transaction</label>
+                <select id="type" class="form-control" [(ngModel)]="newTransaction.type" name="type" required>
+                    <option *ngFor="let type of transactionTypes" [value]="type">{{ type }}</option>
+                </select>
+            </div>
+
+            <!-- === Statut ===-->
+            <div class="mb-3">
+                <label for="statut" class="form-label">Statut</label>
+                <select id="statut" class="form-control" [(ngModel)]="newTransaction.statut" name="statut" required>
+                    <option *ngFor="let statut of transactionStatuts" [value]="statut">{{ statut }}</option>
+                </select>
+            </div>
+
+            <!-- === Description ===-->
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" rows="3" class="form-control" [(ngModel)]="newTransaction.description"
+                    name="description"></textarea>
+            </div>
+
+            <!-- === Button Submit ===-->
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark w-100">
+                    Enregistrer la transaction
                 </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            </div>
+        </fieldset>
+    </form>
+</div>
 
 <!-- Modal pour afficher les détails -->
-<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="detailsModalLabel">Détails de la transaction</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+<div *ngIf="selectedTransaction" class="fixed inset-0 overflow-y-auto z-50" [class.hidden]="!selectedTransaction">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <!-- Background overlay -->
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+
+        <!-- Modal content -->
+        <div
+            class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Détails de la transaction</h3>
+                        <div class="grid grid-cols-1 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-500">Numéro</p>
+                                <p class="mt-1 text-sm text-gray-900">{{ selectedTransaction.numero }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Montant</p>
+                                <p class="mt-1 text-sm text-gray-900">{{ selectedTransaction.montant | currency }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Statut</p>
+                                <p class="mt-1 text-sm text-gray-900">{{ selectedTransaction.statut }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Date</p>
+                                <p class="mt-1 text-sm text-gray-900">{{ selectedTransaction.date | date:'dd MMMM yyyy'
+                                    }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Type</p>
+                                <p class="mt-1 text-sm text-gray-900">{{ selectedTransaction.type }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Description</p>
+                                <p class="mt-1 text-sm text-gray-900">{{ selectedTransaction.description || 'Aucune
+                                    description' }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <p><strong>Nom :</strong> Jony Doe</p>
-                <p><strong>Montant :</strong> $500.00</p>
-                <p><strong>Statut :</strong> Succès</p>
-                <p><strong>Date :</strong> 05 Février 2024</p>
-                <p><strong>Méthode de paiement :</strong> Virement</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button type="button" (click)="selectedTransaction = null"
+                    class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    Fermer
+                </button>
             </div>
         </div>
     </div>
